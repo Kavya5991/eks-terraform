@@ -11,7 +11,7 @@ module "nodegroup" {
 }
 module "deployment" {
   source                = "./modules/deployment"
-  //count = var.deploy_nginx ? 1 : 0
+  count = var.nginx_deploy ? 1 : 0
 }
 
 

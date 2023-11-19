@@ -8,6 +8,12 @@ variable "availability_zones" {
   default = ["us-east-1a", "us-east-1b", "us-east-1c"]
 }
 
+variable "nginx_deploy"{
+ description = "Set to true to deploy nginx pod on top of node"
+  default     = true
+}
+
+
 /*variable "subnet_ids" {
   type        = list(string)
   description = "The list of  subnet IDS"
