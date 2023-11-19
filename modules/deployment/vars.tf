@@ -11,3 +11,33 @@ variable "nginx_image" {
   default     = "nginx:latest"
   description = "Docker image for Nginx from ECR"
 }
+
+# vars.tf
+
+variable "max_surge_percentage" {
+  type    = string
+  default = "25%"
+}
+
+variable "max_unavailable_percentage" {
+  type    = string
+  default = "25%"
+}
+
+
+# vars.tf
+
+variable "container_name" {
+  type    = string
+  default = "nginx-container"
+}
+
+variable "label_name" {
+  type    = string
+  default = "nginx-app"
+}
+
+variable "deploy_name" {
+  type    = string
+  default = "nginx-deploy"
+}

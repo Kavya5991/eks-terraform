@@ -14,15 +14,18 @@ module "deployment" {
   count = var.nginx_deploy ? 1 : 0
 }
 
-
-provider "kubernetes" {
-  host                   = module.cluster.eks_cluster_endpoint
-  cluster_ca_certificate = base64decode(module.cluster.eks_cluster_certificate_authority_data)
-  token                  = module.cluster.eks_access_token
+data "aws_eks_cluster" "example" {
+  name = module.cluster.eks_cluster_name
+  depends_on=[module.cluster]
 }
 
-module "eks-kubeconfig" {
-  source     = "hyperbadger/eks-kubeconfig/aws"
-  version    = "1.0.0"
-  cluster_id = module.cluster.cluster_id
+data "aws_eks_cluster_auth" "example" {
+    name = module.cluster.eks_cluster_name
+    depends_on=[module.cluster]
+}
+
+provider "kubernetes" {
+  host                   = data.aws_eks_cluster.example.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.example.certificate_authority[0].data)
+  token                  = data.aws_eks_cluster_auth.example.token
 }

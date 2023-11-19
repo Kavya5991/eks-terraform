@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "nginx" {
   metadata {
-    name = "nginx-deploy"
+    name = var.deploy_name
   }
 
   spec {
@@ -8,26 +8,34 @@ resource "kubernetes_deployment" "nginx" {
 
     selector {
       match_labels = {
-        app = "nginx-app"
+        app = var.label_name
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "nginx-app"
+          app = var.label_name
         }
       }
 
       spec {
         container {
           image = var.nginx_image
-          name  = "nginx-app"
+          name  = var.container_name
 
 
           
     }
   }
 }
+strategy {
+    type = "RollingUpdate"
+
+    rolling_update {
+      max_surge       = var.max_surge_percentage
+      max_unavailable = var.max_unavailable_percentage
+    }
   }
+}
 }

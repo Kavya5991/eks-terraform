@@ -63,11 +63,7 @@ resource "aws_cloudwatch_log_group" "example" {
 
 
 
-variable "create_cloudwatch_log_group" {
-  type        = bool
-  description = "Whether to create the CloudWatch log group"
-  default     = true
-}
+
 
 # Outputs
 

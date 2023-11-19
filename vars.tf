@@ -8,6 +8,11 @@ variable "availability_zones" {
   default = ["us-east-1a", "us-east-1b", "us-east-1c"]
 }
 
+variable "aws_region" {
+  type    = string
+  default = "us-east-1"
+}
+
 variable "nginx_deploy"{
  description = "Set to true to deploy nginx pod on top of node"
   default     = true

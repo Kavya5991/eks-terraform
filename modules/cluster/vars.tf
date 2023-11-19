@@ -17,3 +17,9 @@ variable "enable_cluster_logs"{
  description = "Set to true to enable cluster logs"
   default     = true
 }
+
+variable "create_cloudwatch_log_group" {
+  type        = bool
+  description = "set it to true to create the CloudWatch log group"
+  default     = true
+}

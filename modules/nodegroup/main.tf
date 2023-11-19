@@ -30,7 +30,7 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEC2ContainerRegistryRea
 
 resource "aws_eks_node_group" "example" {
   cluster_name    = var.cluster_name
-  node_group_name = "demo"
+  node_group_name = var.nodegroup_name
   node_role_arn   = aws_iam_role.example.arn
   //subnet_ids      = element(var.public_subnet_ids,)
   //count         = length(module.cluster.public_subnet_ids)
@@ -38,9 +38,9 @@ resource "aws_eks_node_group" "example" {
 
 
   scaling_config {
-    desired_size = 1
-    max_size     = 2
-    min_size     = 1
+    desired_size = var.desired_size
+    max_size     = var.max_size
+    min_size     = var.min_size
   }
 
   update_config {
@@ -72,7 +72,7 @@ resource "aws_iam_policy" "AmazonEC2ContainerRegistryReadOnly" {
   policy = file("modules/nodegroup/policies/EC2ContainerRegistryReadOnly.json")
 }
 
-data "aws_iam_policy" "AmazonEKSServicePolicy" {
+/*data "aws_iam_policy" "AmazonEKSServicePolicy" {
   arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
 }
 
@@ -101,3 +101,4 @@ resource "aws_iam_policy_attachment" "example-AmazonEKSVPCResourceController" {
   roles       = [aws_iam_role.example.name]
 }
 
+*/
