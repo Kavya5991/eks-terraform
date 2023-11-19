@@ -4,4 +4,4 @@ Implemented Logical sequence to enable Cloudwatch log group and also run specifi
 
 
 ## Command:
-terraform apply =var="nginx_deploy=true" 
+terraform apply -var="nginx_deploy=true" 
