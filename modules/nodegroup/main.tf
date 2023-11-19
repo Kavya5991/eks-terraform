@@ -72,33 +72,3 @@ resource "aws_iam_policy" "AmazonEC2ContainerRegistryReadOnly" {
   policy = file("modules/nodegroup/policies/EC2ContainerRegistryReadOnly.json")
 }
 
-/*data "aws_iam_policy" "AmazonEKSServicePolicy" {
-  arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-}
-
-resource "aws_iam_policy_attachment" "example-AmazonEKSServicePolicy" {
-  name       = "AmazonEKSServicePolicy"
-  policy_arn = data.aws_iam_policy.AmazonEKSServicePolicy.arn
-  roles      = [aws_iam_role.example.name]
-}
-
-data "aws_iam_policy" "AmazonEKSClusterPolicy" {
-  arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-}
-
-resource "aws_iam_policy_attachment" "example-AmazonEKSClusterPolicy" {
-  name       = "AmazonEKSClusterPolicy"
-  policy_arn = data.aws_iam_policy.AmazonEKSClusterPolicy.arn
-  roles      = [aws_iam_role.example.name]
-}
-
-data "aws_iam_policy" "AmazonEKSVPCResourceController" {
-  arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
-}
-resource "aws_iam_policy_attachment" "example-AmazonEKSVPCResourceController" {
-   name       = "AmazonEKSVPCResourceController"
-  policy_arn = data.aws_iam_policy.AmazonEKSVPCResourceController.arn
-  roles       = [aws_iam_role.example.name]
-}
-
-*/
